@@ -1,5 +1,6 @@
 let express = require('express')
 let app = express()
+let bodyParser = require('body-parser')
 // const fs = require('fs');
 // const path = require('path')
 // const test = require('./convertOutputToJSON.js')
@@ -7,11 +8,14 @@ var MongoClient = require('mongodb').MongoClient;
 let port = (process.env.PORT || 3000)
 require('dotenv').config()
 
-
-var uri = `mongodb://${process.env.MONGO_ACCOUNT}:${process.env.MONGO_PASSWORD}${process.env.MONGO_URL}`;
-MongoClient.connect(uri, function(err, db) {
-  if (err) throw err
-
+app.use(bodyParser.json())
+// var uri = `mongodb://${process.env.MONGO_ACCOUNT}:${process.env.MONGO_PASSWORD}${process.env.MONGO_URL}`;
+MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
+  if (err) {
+    console.log(err)
+    process.exit(1)
+  }
+  console.log('connected');
   // db.collection('voters').find().toArray((err, results) => {
   //   if (err) throw err
   //   console.log(results.length);
