@@ -22,11 +22,11 @@ MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
   //   console.log(results.length);
   //   db.close()
   // })
-  app.listen(port, () => {
-    console.log(`Listening at port ${port}`);
-  })
 });
 
+app.listen(port, () => {
+  console.log(`Listening at port ${port}`);
+})
 //
 // db.collection('voters').find({person: 'LEISTER'}, {'person': 1, '_id':0}).toArray(function(err, results) {
 //   if (err) throw err
