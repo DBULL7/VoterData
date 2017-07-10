@@ -16,11 +16,15 @@ MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
     process.exit(1)
   }
   console.log('connected');
+  // db.close()
   // db.collection('voters').find().toArray((err, results) => {
   //   if (err) throw err
   //   console.log(results.length);
   //   db.close()
   // })
+  app.listen(port, () => {
+    console.log(`Listening at port ${port}`);
+  })
 });
 
 //
@@ -29,9 +33,7 @@ MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
 //   console.log(results);
 // })
 
-app.listen(port, () => {
-  console.log(`Listening at port ${port}`);
-})
+
 
 
 // Backup code in case I want to generate more voter records
