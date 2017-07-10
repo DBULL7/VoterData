@@ -1,7 +1,7 @@
 let express = require('express')
 let app = express()
-const fs = require('fs');
-const path = require('path')
+// const fs = require('fs');
+// const path = require('path')
 // const test = require('./convertOutputToJSON.js')
 var MongoClient = require('mongodb').MongoClient;
 let port = (process.env.PORT || 3000)
