@@ -3,3 +3,10 @@ machine:
     America/Denver
   node:
     version: 7.10.0
+
+
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: gentle-shelf-31018

@@ -10,17 +10,17 @@ require('dotenv').config()
 
 app.use(bodyParser.json())
 // var uri = `mongodb://${process.env.MONGO_ACCOUNT}:${process.env.MONGO_PASSWORD}${process.env.MONGO_URL}`;
-MongoClient.connect(process.env.MONGODB_URI, function(err, db) {
+MongoClient.connect(process.env.MONGODB_URI, function(err, database) {
   if (err) {
     console.log(err)
     process.exit(1)
   }
   console.log('connected');
   // db.close()
-  // db.collection('voters').find().toArray((err, results) => {
+  // database.collection('voters').find().toArray((err, results) => {
   //   if (err) throw err
   //   console.log(results.length);
-  //   db.close()
+  //   database.close()
   // })
   app.listen(port, () => {
     console.log(`Listening at port ${port}`);
