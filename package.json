@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/mocha",
     "start": "nodemon server/server.js"
   },
   "keywords": [],
@@ -17,5 +17,10 @@
     "mongodb": "^2.2.30",
     "nodemon": "^1.11.0",
     "pg": "^6.4.0"
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.4.2"
   }
 }
