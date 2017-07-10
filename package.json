@@ -1,0 +1,21 @@
+{
+  "name": "byob",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "knex": "^0.13.0",
+    "mongodb": "^2.2.30",
+    "nodemon": "^1.11.0",
+    "pg": "^6.4.0"
+  }
+}
