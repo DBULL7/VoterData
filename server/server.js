@@ -10,6 +10,8 @@ app.use(bodyParser.json())
 app.use('/api/v1', router)
 
 app.listen(port, () => {
+  process.stdout.write('\033c')
+  console.log()
   console.log(`Listening at port ${port}`);
 })
 
