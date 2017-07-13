@@ -13,13 +13,24 @@ MongoClient.connect(process.env.MONGODB_URI, function(err, database) {
 
 
 const getDistrict = (req, res) => {
-  let distNum = req.params.num
-  let checkType = Number(distNum)
-  if (isNaN(checkType)) return res.status(400).json({message: 'pick a number from 1 to 7'})
-  if (distNum.length > 1) return res.status(400).json({message: 'There are only six districts'})
-  db.collection('voters').find({District: checkType}).limit(100).toArray((err, results) => {
+  let toNum = Number(req.params.num)
+  db.collection('districts').find({District: toNum}).toArray((err, results) => {
     if (err) return res.status(404).send({message: 'Nothing found. Maybe enter a district between 1 and 7?'})
     res.status(200).json(results)
+  })
+}
+
+const getDistrictVoters = () => {
+  // NOTE: need to add toNum and use the helper method in the router to check if its not a num
+  let district = db.collection('districts').findOne({District: toNum})
+  Promise.all([district]).then(foundDistrict => {
+    let districtID = foundDistrict[0]
+    db.collection('voters').find({District: districtID.District}).limit(100).toArray((err, results2) => {
+      if (err) throw err
+      res.json(results2)
+    })
+  }).catch(err => {
+    res.status(500).json({message: 'something went wrong'})
   })
 }
 
