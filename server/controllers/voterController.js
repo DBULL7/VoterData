@@ -14,7 +14,6 @@ MongoClient.connect(process.env.MONGODB_URI, function(err, database) {
 
 
 const getVoters = (req, res) => {
-  // db.collection('voters').update({"voter.0": '64'},{"$pop": {voter: -1}}, {multi: true})
 
   // console.log(test);
   // NOTE: make this so that person can go find voters every 100 voters? using .skip()
@@ -65,7 +64,8 @@ module.exports = {
 };
 
 
-//
+// db.collection('voters').update({"voter.0": '64'},{"$pop": {voter: -1}}, {multi: true})
+
 // db.collection('voters').find({person: 'LEISTER'}, {'person': 1, '_id':0}).toArray(function(err, results) {
 //   if (err) throw err
 //   console.log(results);
