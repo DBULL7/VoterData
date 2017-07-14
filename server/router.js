@@ -16,12 +16,11 @@ r.delete('/district/:id', helper.checkAuth, dc.deleteDistrict) //works but verif
 r.get('/district/:num', helper.checkreq, dc.getDistrict) //works
 
 
-r.get('/voters/range/:num')
 r.get('/voters', vc.getVoters)
 r.get('/voters/:voter', vc.getVoter)
-r.post('/voter', vc.newVoter)
-r.patch('/voter/:id')
-r.delete('/voters/:voter', vc.deleteVoter)
+r.post('/voters', helper.checkAuth, vc.newVoter)
+r.patch('/voters/:id')
+r.delete('/voters/:id', helper.checkAuth, vc.deleteVoter)
 
 r.post('/authenticate', a.getAuthentication)
 

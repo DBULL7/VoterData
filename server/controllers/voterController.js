@@ -1,5 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 require('dotenv').config()
+let mongodb = require('mongodb')
 
 
 let db;
@@ -43,17 +44,33 @@ const getVoter = (req, res) => {
 }
 
 const newVoter = (req, res) => {
-  let voter = req.body
-  if (voter.name) {
-    console.log(voter);
-    res.status(201).json(voter)
-  }
+  // NOTE: need to verify all this info so null isnt inserted
+  let { lastName, firstName, District, Gender, party, status } = req.body
+  db.collection('voters').insert(
+                                 { voter: [ lastName, firstName ],
+                                 District: District,
+                                 Gender: Gender,
+                                 party: party,
+                                 status: status }
+                               )
+  .then(results => {
+    res.status(201).json({message: 'New Voter Added'})
+  }).catch(err => {
+    res.status(500).json(err)
+  })
 }
 
 const deleteVoter = (req, res) => {
-  console.log(req.params.voter);
-  // res.status
+  let id = req.params.id
+  db.collection('voters').deleteOne({_id: new mongodb.ObjectID(id)})
+  .then(result => {
+    res.status(204).json({message: 'Successfully deleted'})
+  }).catch(err => {
+    res.status(500).json(err)
+  })
 }
+
+
 
 
 module.exports = {
