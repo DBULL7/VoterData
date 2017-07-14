@@ -6,14 +6,14 @@ const helper = require('./controllers/controllerHelpers')
 const a = require('./controllers/authenticateController')
 
 
-r.get('/district', dc.getAllDistricts) // works
-r.get('/district/:num/:gender/', dc.getGender) // works need to make it able to get all voters using a range
-r.get('/district/:num/voters/', dc.getDistrictVoters) //works
-r.patch('/district/:id', helper.checkAuth, dc.updateDistrict) // works
-r.post('/district', helper.checkAuth, dc.newDistrict) // works but needs improvements
-r.get('/district/:num/party/party?:party', dc.getDistrictByParty) //works
-r.delete('/district/:id', helper.checkAuth, dc.deleteDistrict) //works but verify again
-r.get('/district/:num', helper.checkreq, dc.getDistrict) //works
+r.get('/district', dc.getAllDistricts)
+r.get('/district/:num/:gender/', dc.getGender)
+r.get('/district/:num/voters/', dc.getDistrictVoters)
+r.patch('/district/:id', helper.checkAuth, dc.updateDistrict)
+r.post('/district', helper.checkAuth, dc.newDistrict)
+r.get('/district/:num/party/party?:party', dc.getDistrictByParty)
+r.delete('/district/:id', helper.checkAuth, dc.deleteDistrict)
+r.get('/district/:num', helper.checkreq, dc.getDistrict)
 
 
 r.get('/voters', vc.getVoters)
@@ -21,6 +21,7 @@ r.get('/voters/:voter', vc.getVoter)
 r.post('/voters', helper.checkAuth, vc.newVoter)
 r.patch('/voters/:id', helper.checkAuth, vc.updateVoter)
 r.delete('/voters/:id', helper.checkAuth, vc.deleteVoter)
+
 
 r.post('/authenticate', a.getAuthentication)
 

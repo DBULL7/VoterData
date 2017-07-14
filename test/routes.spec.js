@@ -7,10 +7,5 @@ const server = require('../server/server');
 
 chai.use(chaiHttp);
 
-describe('Client Routes', () => {
-
-});
-
 describe('API Routes', () => {
-
 });
