@@ -3,6 +3,14 @@ let app = express()
 let bodyParser = require('body-parser')
 const router = require('./router')
 let port = (process.env.PORT || 3000)
+require('dotenv').config()
+
+
+if (!process.env.CLIENT_SECRET || !process.env.USERNAME || !process.env.PASSWORD) {
+  throw 'Make sure you have a CLIENT_SECRET, USERNAME, and PASSWORD in your .env file'
+}
+
+app.set('secretKey', process.env.CLIENT_SECRET);
 
 app.use(bodyParser.json())
 
@@ -15,7 +23,7 @@ app.listen(port, () => {
   console.log(`Listening at port ${port}`);
 })
 
-
+module.exports = app;
 
 
 
