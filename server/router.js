@@ -19,7 +19,7 @@ r.get('/district/:num', helper.checkreq, dc.getDistrict) //works
 r.get('/voters', vc.getVoters)
 r.get('/voters/:voter', vc.getVoter)
 r.post('/voters', helper.checkAuth, vc.newVoter)
-r.patch('/voters/:id')
+r.patch('/voters/:id', helper.checkAuth, vc.updateVoter)
 r.delete('/voters/:id', helper.checkAuth, vc.deleteVoter)
 
 r.post('/authenticate', a.getAuthentication)
