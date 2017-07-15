@@ -1,4 +1,4 @@
-let jwt = require('jsonwebtoken');
+let jwt = require('jsonwebtoken')
 
 const checkreq = (req, res, next) => {
   let distNum = req.params.num
@@ -11,7 +11,7 @@ const checkreq = (req, res, next) => {
 const checkAuth = (req, res, next) => {
   const token = req.body.token ||
                 req.params.token ||
-                req.headers['authorization'];
+                req.headers['authorization']
 
   if (token) {
     jwt.verify(token, req.app.get('secretKey'), (error, decoded) => {
@@ -19,22 +19,22 @@ const checkAuth = (req, res, next) => {
         return res.status(403).send({
           success: false,
           message: 'Invalid authorization token.'
-        });
+        })
       }
       else {
-        req.decoded = decoded;
-        next();
+        req.decoded = decoded
+        next()
       }
-    });
+    })
   } else {
     return res.status(403).send({
       success: false,
       message: 'You must be authorized to hit this endpoint'
-    });
+    })
   }
-};
+}
 
 module.exports = {
   checkreq: checkreq,
   checkAuth: checkAuth
-};
+}

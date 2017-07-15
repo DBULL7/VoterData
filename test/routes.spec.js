@@ -1,11 +1,11 @@
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = 'test'
 require('dotenv').config()
-const chai = require('chai');
-const should = chai.should();
-const chaiHttp = require('chai-http');
-const server = require('../server/server');
-console.log(server);
-chai.use(chaiHttp);
+const chai = require('chai')
+const should = chai.should()
+const chaiHttp = require('chai-http')
+const server = require('../server/server')
+console.log(server)
+chai.use(chaiHttp)
 
 describe('API Routes', () => {
   describe('Voter Routes', () => {
@@ -270,4 +270,4 @@ describe('API Routes', () => {
       })
     })
   })
-});
+})

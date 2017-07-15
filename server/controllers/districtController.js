@@ -1,9 +1,9 @@
-var MongoClient = require('mongodb').MongoClient;
+var MongoClient = require('mongodb').MongoClient
 require('dotenv').config()
 
 
-let db;
-let mongoConnection;
+let db
+let mongoConnection
 if (process.env.NODE_ENV == 'test') {
   mongoConnection = process.env.MONGODB_TEST_URI
 } else {
@@ -14,7 +14,7 @@ MongoClient.connect(mongoConnection, function(err, database) {
     console.log(err)
   }
   db = database
-});
+})
 
 
 const getDistrict = (req, res) => {
@@ -120,4 +120,4 @@ module.exports = {
   getGender: getGender,
   deleteDistrict: deleteDistrict,
   getAllDistricts: getAllDistricts
-};
+}
