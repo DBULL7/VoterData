@@ -226,7 +226,7 @@ describe('API Routes', () => {
       })
     })
 
-    it('should fail to delete a district with authentication', (done) => {
+    it.skip('should fail to delete a district with authentication', (done) => {
       chai.request(server)
       .delete('/api/v1/district/1')
       .set('Content-Type', 'application/json')
@@ -237,7 +237,7 @@ describe('API Routes', () => {
       })
     })
 
-    it('should fail to get a specific district', (done) => {
+    it.skip('should fail to get a specific district', (done) => {
       chai.request(server)
       .get('/api/v1/district/1')
       .end((err, response) => {
