@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha",
     "start": "nodemon server/server.js",
-    "lint": "jshintrc ."
+    "lint": "jshint ."
   },
   "keywords": [],
   "author": "",
