@@ -3,10 +3,15 @@ require('dotenv').config()
 
 
 let db;
-MongoClient.connect(process.env.MONGODB_URI, function(err, database) {
+let mongoConnection;
+if (process.env.NODE_ENV == 'test') {
+  mongoConnection = process.env.MONGODB_TEST_URI
+} else {
+  mongoConnection = process.env.MONGODB_URI
+}
+MongoClient.connect(mongoConnection, function(err, database) {
   if (err) {
     console.log(err)
-    process.exit(1)
   }
   db = database
 });

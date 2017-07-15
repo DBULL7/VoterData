@@ -4,10 +4,15 @@ let mongodb = require('mongodb')
 
 
 let db;
-MongoClient.connect(process.env.MONGODB_URI, function(err, database) {
+let mongoConnection;
+if (process.env.NODE_ENV == 'test') {
+  mongoConnection = process.env.MONGODB_TEST_URI
+} else {
+  mongoConnection = process.env.MONGODB_URI
+}
+MongoClient.connect(mongoConnection, function(err, database) {
   if (err) {
     console.log(err)
-    process.exit(1)
   }
   db = database
 });
@@ -17,7 +22,7 @@ MongoClient.connect(process.env.MONGODB_URI, function(err, database) {
 const getVoters = (req, res) => {
   // NOTE: make this so that person can go find voters every 100 voters? using .skip()
   db.collection('voters').find({}).limit(100).toArray((err, results) => {
-    if (err) return res.status(404).send(404)
+    if (err) return res.status(404).send(err)
     res.status(200).json(results)
   })
 }
@@ -90,11 +95,3 @@ module.exports = {
   deleteVoter: deleteVoter,
   updateVoter: updateVoter
 };
-
-
-// db.collection('voters').update({"voter.0": '64'},{"$pop": {voter: -1}}, {multi: true})
-
-// db.collection('voters').find({person: 'LEISTER'}, {'person': 1, '_id':0}).toArray(function(err, results) {
-//   if (err) throw err
-//   console.log(results);
-// })
