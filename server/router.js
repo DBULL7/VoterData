@@ -25,4 +25,4 @@ r.delete('/voters/:id', helper.checkAuth, vc.deleteVoter)
 
 r.post('/authenticate', a.getAuthentication)
 
-module.exports = r;
+module.exports = r
