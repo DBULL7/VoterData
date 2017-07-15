@@ -15,6 +15,8 @@ To make a post, patch, or delete request you must be authenticated.
 #### Voters
 **<code>GET</code> voters**
 
+    Returns 100 voters 
+
 **<code>GET</code> voters/:voter**
 
 Note: This voters/:voter is case sensitive and will return exact matches.
@@ -57,33 +59,58 @@ Note that names/addresses are capitalized. The server will return the top 10 mat
 
 **<code>POST</code> voters**
 
+    Creates new voter. Content-Type:application/json.
+    Body requires: lastName, firstName, District, Gender, party, status
+
 **<code>PATCH</code> voters/:id**
 
+    Updates voter. Body requires: field, fieldValue, command. 
+    command should either be $set to create/update a field or $unset to remove a field.
+    fieldValue can be array, object, string, or int. 
+
 **<code>DELETE</code> voters/:id**
+
+    Deletes a voter by voter id. 
 
 ### District
 
 **<code>GET</code> district**
 
+    Returns the 7 districts of Colorado.
+
 **<code>GET</code> district/:num**
+    
+    Returns single district as specified in url parameter
 
 **<code>GET</code> district/:num/:gender/**
 
+    Enter district number, and Male or Female to see 100 voters of specified gender within the district
+
 **<code>GET</code> district/:num/voters/**
 
-**<code>GET</code> district/:num/party?party=""**
+    Enter district number, returns 100 voters from that district.
 
-Party parameter examples: REP, DEM, UAF.
+**<code>GET</code> district/:num/party?party=""**
+    
+    Returns 100 voters of a specified district and party.
+    Party parameter examples: REP, DEM, UAF.
 
 **<code>PATCH</code> district/:id**
 
+    Updates District. Body requires: field, fieldValue, command. 
+    command should either be $set to create/update a field or $unset to remove a field.
+    fieldValue can be array, object, string, or int. 
+
 **<code>POST</code> district**
 
-**<code>DELETE</code> district/:id**
+    Creates new District. POST body must include: id, state, district. id should correspond to district number. 
 
+**<code>DELETE</code> district/:id**
+    
+    Delete district by id. 
 
 ### Authentication
 
 **<code>POST</code> authenticate**
 
-Request body must include username and password.
+    Request body must include username and password.
