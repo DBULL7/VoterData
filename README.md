@@ -2,7 +2,7 @@
 [![CircleCI](https://circleci.com/gh/DBULL7/VoterData.svg?style=svg)](https://circleci.com/gh/DBULL7/VoterData)
 
 
-### Hosted @ [Heroku](https://gentle-shelf-31018.herokuapp.com/api/v1/voters)
+### Hosted @ [Heroku](https://voter-data.herokuapp.com/api/v1/voters)
 
 ## Endpoints
 
